@@ -7,6 +7,7 @@ defmodule DemoServer.MixProject do
       version: "0.1.0",
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
+      releases: [demo_server: [include_executables_for: [:unix]]],
       deps: deps()
     ]
   end
