@@ -3,7 +3,7 @@ import demo.v1.V1;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
-public class Server {
+public class DemoServer {
     public static void main(String[] args) throws Exception {
         io.grpc.Server server = ServerBuilder.forPort(50051)
                 .addService(new DemoServiceImpl())
