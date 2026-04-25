@@ -1,14 +1,12 @@
 FROM dhi.io/rust:1-alpine3.23-dev AS builder
 WORKDIR /app
-RUN apk add --no-cache musl-dev git
+RUN apk add --no-cache musl-dev
 COPY Cargo.toml Cargo.lock* ./
-RUN mkdir -p src && echo "fn main(){}" > src/main.rs && cargo build --release 2>/dev/null || true
 COPY src/ src/
-RUN touch src/main.rs && cargo build --release
+RUN cargo build --release
 
 FROM dhi.io/alpine-base:3.23
 COPY --from=builder /usr/lib/libgcc_s.so.1 /lib/
 COPY --from=builder /app/target/release/server /server
 EXPOSE 50051
-
 CMD ["/server"]
