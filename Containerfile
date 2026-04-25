@@ -7,6 +7,6 @@ FROM dhi.io/python:3-alpine3.23
 WORKDIR /app
 COPY --from=build /deps /deps
 COPY gen/ gen/
-COPY *.py .
+COPY demo_server.py .
 ENV PYTHONPATH=/app/gen:/deps
-ENTRYPOINT ["python", "server.py"]
+ENTRYPOINT ["python", "demo_server.py"]
