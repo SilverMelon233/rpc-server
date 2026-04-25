@@ -2,5 +2,8 @@
   "name": "demo/server",
   "type": "project",
   "repositories": [],
-  "require": {}
+  "require": {
+    "grpc/grpc": "^1.80",
+    "google/protobuf": "^5.34"
+  }
 }
