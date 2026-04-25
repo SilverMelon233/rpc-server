@@ -16,5 +16,5 @@ dependencies {
     compileOnly("org.apache.tomcat:annotations-api:6.0.53")
 }
 application {
-    mainClass.set("ServerKt")
+    mainClass.set("DemoServerKt")
 }
