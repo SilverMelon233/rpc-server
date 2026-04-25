@@ -4,9 +4,9 @@ COPY go.mod ./
 COPY gen/ gen/
 COPY *.go ./
 RUN GOPROXY=https://proxy.golang.org,direct go mod tidy && \
-    go build -o /out .
+    go build -o /demo-server .
 
 FROM dhi.io/alpine-base:3.23
-COPY --from=build /out /app
+COPY --from=build /demo-server /demo-server
 EXPOSE 50051
-ENTRYPOINT ["/app"]
+ENTRYPOINT ["/demo-server"]
