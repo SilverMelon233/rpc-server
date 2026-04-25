@@ -10,7 +10,7 @@ COPY lib/ lib/
 RUN mix compile
 RUN mix release demo_server
 
-FROM dhi.io/alpine-base:3.23
+FROM dhi.io/erlang-otp:28-alpine3.23
 WORKDIR /app
 COPY --from=build /app/_build/prod/rel/demo_server ./
 EXPOSE 50051
