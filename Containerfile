@@ -7,6 +7,6 @@ FROM dhi.io/bun:1-alpine3.22
 WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
 COPY gen/ gen/
-COPY server.ts .
+COPY demo_server.ts .
 EXPOSE 50051
-CMD ["bun", "run", "server.ts"]
+CMD ["bun", "run", "demo_server.ts"]
