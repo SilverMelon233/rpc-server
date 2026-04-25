@@ -12,7 +12,7 @@ object DemoServiceImpl extends ZioV1.DemoService:
   def health(request: Empty): IO[StatusException, HealthResponse] =
     ZIO.succeed(HealthResponse(status = "ok"))
 
-object Server extends ZIOAppDefault:
+object DemoServer extends ZIOAppDefault:
   def run =
     ServerLayer
       .fromServiceList(
