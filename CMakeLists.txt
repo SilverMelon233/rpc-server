@@ -8,5 +8,5 @@ find_package(gRPC REQUIRED)
 
 
 include_directories(gen)
-add_executable(server server.cc gen/demo/v1.pb.cc gen/demo/v1.grpc.pb.cc)
-target_link_libraries(server PRIVATE gRPC::grpc++ protobuf::libprotobuf)
+add_executable(demo-server demo_server.cc gen/demo/v1.pb.cc gen/demo/v1.grpc.pb.cc)
+target_link_libraries(demo-server PRIVATE gRPC::grpc++ protobuf::libprotobuf)
