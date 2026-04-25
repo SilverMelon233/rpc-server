@@ -1,7 +1,6 @@
 import GRPC
 import NIO
 import SwiftProtobuf
-import DemoStub
 
 final class DemoServiceProvider: Demo_V1_DemoServiceProvider {
     var interceptors: Demo_V1_DemoServiceServerInterceptorFactoryProtocol? { nil }
