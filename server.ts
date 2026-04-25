@@ -1,6 +1,6 @@
 import * as grpc from '@grpc/grpc-js';
-import { type IDemoService, demoServiceDefinition } from '@silvermelon233/rpc-demo-stub/grpc-server';
-import { EchoResponse, HealthResponse } from '@silvermelon233/rpc-demo-stub';
+import { type IDemoService, demoServiceDefinition } from './gen/demo/v1.grpc-server.js';
+import { EchoResponse, HealthResponse } from './gen/demo/v1.js';
 
 const impl: IDemoService = {
   echo(call, callback) {
