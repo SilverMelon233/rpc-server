@@ -1,7 +1,7 @@
 FROM dhi.io/ruby:4-alpine3.23-dev AS build
 WORKDIR /app
 COPY Gemfile .
-RUN bundle install --path /deps
+RUN bundle config set path /deps && bundle install
 COPY lib/ lib/
 COPY demo_server.rb .
 
