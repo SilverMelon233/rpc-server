@@ -1,12 +1,11 @@
 import demo.v1.DemoServiceGrpc;
 import demo.v1.V1;
-import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 public class Server {
     public static void main(String[] args) throws Exception {
-        Server server = ServerBuilder.forPort(50051)
+        io.grpc.Server server = ServerBuilder.forPort(50051)
                 .addService(new DemoServiceImpl())
                 .build()
                 .start();
