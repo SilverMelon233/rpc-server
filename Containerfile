@@ -2,7 +2,7 @@ FROM dhi.io/golang:1-alpine3.23-dev AS build
 WORKDIR /src
 COPY go.mod ./
 COPY server.go ./
-RUN GOFLAGS=-mod=mod GOPROXY=direct go get github.com/SilverMelon233/rpc-stub/golang@main && \
+RUN GOFLAGS=-mod=mod GOPROXY=direct go get github.com/SilverMelon233/rpc-stub/golang@golang && \
     GOFLAGS=-mod=mod GOPROXY=direct go build -o /server .
 
 FROM dhi.io/alpine-base:3.23
