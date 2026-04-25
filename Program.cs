@@ -1,20 +1,12 @@
+using System.Threading.Tasks;
 using DemoServer;
+using Grpc.Core;
 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.WebHost.ConfigureKestrel(options =>
+var server = new Grpc.Core.Server
 {
-    options.ListenAnyIP(50051, listenOptions =>
-    {
-        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
-    });
-});
-
-builder.Services.AddGrpc();
-
-var app = builder.Build();
-
-app.MapGrpcService<DemoServiceImpl>();
-app.MapGet("/", () => "gRPC server running on port 50051");
-
-app.Run();
+    Services = { Demo.V1.DemoService.BindService(new DemoServiceImpl()) },
+    Ports = { new ServerPort("0.0.0.0", 50051, ServerCredentials.Insecure) }
+};
+server.Start();
+Console.WriteLine("gRPC server listening on port 50051");
+await Task.Delay(Timeout.Infinite);
