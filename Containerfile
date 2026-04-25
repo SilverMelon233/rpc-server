@@ -9,7 +9,7 @@ COPY server.csproj .
 COPY *.cs ./
 RUN dotnet nuget add source /tmp/nuget-feed --name local && \
     dotnet publish -c Release -r linux-musl-x64 --self-contained true \
-      /p:PublishSingleFile=true /p:PublishTrimmed=true -o /app
+      /p:PublishSingleFile=true -o /app
 
 FROM dhi.io/alpine-base:3.23
 COPY --from=build /app/Server /server
