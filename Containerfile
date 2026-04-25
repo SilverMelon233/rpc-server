@@ -1,11 +1,11 @@
 FROM dhi.io/golang:1-alpine3.23-dev AS build
 WORKDIR /src
 COPY go.mod ./
-COPY server.go ./
-RUN GOFLAGS=-mod=mod GOPROXY=direct go get github.com/SilverMelon233/rpc-stub@golang && \
-    GOFLAGS=-mod=mod GOPROXY=direct go build -o /server .
+COPY gen/ gen/
+COPY *.go ./
+RUN go mod tidy && go build -o /out .
 
 FROM dhi.io/alpine-base:3.23
-COPY --from=build /server /server
+COPY --from=build /out /app
 EXPOSE 50051
-ENTRYPOINT ["/server"]
+ENTRYPOINT ["/app"]
